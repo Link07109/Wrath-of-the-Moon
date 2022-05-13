@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Style.uss?fileID=7433441132597879392&amp;guid=50ac26463b637bf4785e299ced387450&amp;type=3#Style" />
+    <ui:VisualElement name="BG" style="align-items: center; justify-content: center; flex-grow: 1; background-color: rgb(28, 27, 34); background-image: url(&apos;project://database/Assets/Art/Images/MainMenuBG.png?fileID=2800000&amp;guid=15703fc6e477b0842aa7714402caafd9&amp;type=3#MainMenuBG&apos;);">
+        <ui:VisualElement style="align-items: center; justify-content: center; color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0); height: 80%; width: 533px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;">
+            <ui:GroupBox style="height: 213px; width: 30%; flex-direction: column; align-items: center; justify-content: flex-start; position: absolute; top: 175px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;">
+                <ui:Button text="Start Game" display-tooltip-when-elided="true" name="start-button" class="button-style" style="bottom: auto; position: absolute;" />
+                <ui:Button text="Show Message" display-tooltip-when-elided="true" name="message-button" class="button-style" style="bottom: 33%; position: absolute;" />
+                <ui:Button text="Exit Game" display-tooltip-when-elided="true" name="exit-button" class="button-style" style="position: absolute; bottom: 0;" />
+            </ui:GroupBox>
+            <ui:Label text="Wrath of the Moon" display-tooltip-when-elided="true" style="font-size: 60px; color: rgb(255, 255, 255); -unity-font-style: bold; position: absolute; top: 12.5%; width: 567px;" />
+            <ui:Label text="Label" display-tooltip-when-elided="true" name="message-label" style="display: none; color: rgb(255, 255, 255); font-size: 40px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
