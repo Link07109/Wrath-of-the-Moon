@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class WeaponSlotManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private WeaponHolderSlot handSlot;
 
-    // Update is called once per frame
-    void Update()
+    public void LoadWeaponOnSlot(WeaponItem weaponItem)
     {
+        handSlot = GetComponentInChildren<WeaponHolderSlot>();
         
+        handSlot.LoadWeaponModel(weaponItem);
     }
 }

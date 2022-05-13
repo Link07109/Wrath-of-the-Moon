@@ -18,7 +18,10 @@ public class InputHandler : MonoBehaviour
     public float cameraY;
 
     public bool isRollPressed;
+    public bool isSlidePressed;
     // private bool isJumpPressed;
+    public bool isRBPressed;
+    public bool isRTPressed;
 
     private void Awake()
     {
@@ -34,8 +37,27 @@ public class InputHandler : MonoBehaviour
         playerInput.PlayerActions.Roll.started += OnRoll;
         playerInput.PlayerActions.Roll.canceled += OnRoll;
         
+        playerInput.PlayerActions.Slide.started += OnSlide;
+        playerInput.PlayerActions.Slide.canceled += OnSlide;
+        
         // playerInput.PlayerActions.Jump.started += OnJump;
         // playerInput.PlayerActions.Jump.canceled += OnJump;
+
+        playerInput.PlayerActions.RB.started += OnRBInput;
+        playerInput.PlayerActions.RB.canceled += OnRBInput;
+        
+        playerInput.PlayerActions.RT.started += OnRTInput;
+        playerInput.PlayerActions.RT.canceled += OnRTInput;
+    }
+
+    private void OnRBInput(InputAction.CallbackContext context)
+    {
+        isRBPressed = context.ReadValueAsButton();
+    }
+    
+    private void OnRTInput(InputAction.CallbackContext context)
+    {
+        isRTPressed = context.ReadValueAsButton();
     }
     
     private void OnMovementInput(InputAction.CallbackContext context)
@@ -57,6 +79,11 @@ public class InputHandler : MonoBehaviour
     private void OnRoll(InputAction.CallbackContext context)
     {
         isRollPressed = context.ReadValueAsButton();
+    }
+    
+    private void OnSlide(InputAction.CallbackContext context)
+    {
+        isSlidePressed = context.ReadValueAsButton();
     }
 
     private void OnEnable()

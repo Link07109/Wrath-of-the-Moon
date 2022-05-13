@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
   itemName: Sword
-  modelPrefab: {fileID: 0}
+  modelPrefab: {fileID: 2920447515442577506, guid: c00a454c935a282428f6eef789e79e46, type: 3}
+  OH_Light_Attack_1: LightSlash
+  OH_Heavy_Attack_1: HeavySlash

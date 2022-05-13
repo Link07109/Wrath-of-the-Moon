@@ -35,8 +35,11 @@ public class PlayerManager : MonoBehaviour
         isInteracting = animator.GetBool(IsInteracting);
         
         characterMovement.HandleMovement(delta);
-        characterMovement.HandleRollAndSprint(delta);
+        characterMovement.HandleRollAndSprint("RunningRoll", true);
+        characterMovement.HandleRollAndSprint("RunningSlide", false);
         characterMovement.HandleFalling(delta);
+        
+        characterMovement.HandleAttacking();
     }
 
     private void FixedUpdate()

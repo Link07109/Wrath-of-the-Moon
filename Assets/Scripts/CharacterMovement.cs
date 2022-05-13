@@ -9,6 +9,9 @@ public class CharacterMovement : MonoBehaviour
     private InputHandler inputHandler;
     private AnimatorHandler animatorHandler;
     private PlayerManager playerManager;
+    
+    private PlayerAttacker playerAttacker;
+    private Inventory inventory;
 
     private Transform cameraObject;
     public GameObject normalCamera;
@@ -37,6 +40,9 @@ public class CharacterMovement : MonoBehaviour
         animatorHandler = GetComponentInChildren<AnimatorHandler>();
         playerManager = GetComponent<PlayerManager>();
         
+        playerAttacker = GetComponent<PlayerAttacker>();
+        inventory = GetComponent<Inventory>();
+        
         cameraObject = Camera.main.transform;
         myTransform = transform;
         
@@ -49,6 +55,14 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 normalVector;
     private Vector3 targetPosition;
 
+    public void HandleAttacking()
+    {
+        if (inputHandler.isRBPressed)
+            playerAttacker.HandleLightAttack(inventory.weapon);
+        else if (inputHandler.isRTPressed)
+            playerAttacker.HandleHeavyAttack(inventory.weapon);
+    }
+    
     private void HandleRotation(float delta)
     {
         var moveOverride = inputHandler.moveAmount;
@@ -91,18 +105,19 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    public void HandleRollAndSprint(float delta)
+    public void HandleRollAndSprint(string animString, bool inputRoll)
     {
         if (animatorHandler.animator.GetBool(animatorHandler.IsInteracting)) return;
 
-        if (!inputHandler.isRollPressed) return;
+        var comparison = inputRoll ? inputHandler.isRollPressed : inputHandler.isSlidePressed;
+        if (!comparison) return;
         
         moveDirection = cameraObject.forward * inputHandler.vertical;
         moveDirection += cameraObject.right * inputHandler.horizontal;
 
         if (!(inputHandler.moveAmount > 0)) return;
         
-        animatorHandler.PlayTargetAnimation("RunningSlide", true);
+        animatorHandler.PlayTargetAnimation(animString, true);
         moveDirection.y = 0;
         var rollRotation = Quaternion.LookRotation(moveDirection);
         myTransform.rotation = rollRotation;
